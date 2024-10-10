@@ -1,0 +1,52 @@
+
+<div class="p-fluid">
+  <h2>Crear Evento</h2>
+  <form [formGroup]="EventoFormulario" (ngSubmit)="onSubmit()">
+
+    <!-- Campo de selección del tipo de evento usando PrimeNG Dropdown -->
+    <div class="p-field">
+      <label  >Seleccione El Tipo de Evento</label>
+      <p-dropdown
+        inputId="tipoEvento"
+        formControlName="tipoEvento"
+        [options]="tipoEvento"
+        optionLabel="label"
+        optionValue="value"
+        [showClear]="true"
+        placeholder="Seleccione un tipo de evento">
+      </p-dropdown>
+    </div>
+
+
+    <div class="p-field">
+      <label for="fechaInicio">Fecha de Inicio</label>
+      <input type="datetime-local" id="fechaInicio" formControlName="fechaInicio" class="p-inputtext p-component" required>
+    </div>
+
+
+    <div class="p-field">
+      <label for="fechaFin">Fecha de Fin</label>
+      <input type="datetime-local" id="fechaFin" formControlName="fechaFin" class="p-inputtext p-component" required>
+    </div>
+
+
+    <div class="p-field">
+      <label for="lugar">Lugar</label>
+      <input type="text" id="lugar" formControlName="lugar" class="p-inputtext p-component" required>
+    </div>
+
+
+    <div class="p-field">
+      <label for="descripcion">Descripción</label>
+      <textarea id="descripcion" formControlName="descripcion" class="p-inputtext p-component" required></textarea>
+    </div>
+
+
+
+    <button type="submit" class="p-button p-component" [disabled]="isSaveInProgress">
+      <span class="p-button-label">{{ edit ? 'Actualizar' : 'Guardar' }}</span>
+    </button>
+  </form>
+
+</div>
+

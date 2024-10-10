@@ -1,0 +1,42 @@
+
+<div class="flex flex-column gap-2">
+<a routerLink="formulario/new" class="p-button font-bold">
+  Crear Nuevo Evento
+</a>
+  <div class="flex gap-4 flex-wrap">
+@for (Evento of Evento; track Evento.id) {
+  <p-card header="{{Evento.tipoEvento}}Advanced Card" subheader="{{Evento.fechaInicio}}Card Subheader" [style]="{ width: '360px' }">
+    <ng-template pTemplate="header">
+      <img alt="Card" src="https://primefaces.org/cdn/primeng/images/card-ng.jpg"/>
+    </ng-template>
+    <p>
+      {{Evento.lugar}}
+    </p>
+    <p>
+      {{Evento.descripcion}}
+    </p>
+    <p>
+      {{Evento.fechaFin}}
+    </p>
+    <ng-template pTemplate="footer">
+      <div class="flex gap-1 mt-1">
+        <p-button
+          (onClick)="deleteEvento(Evento.id)"
+          label="Borrar"
+          severity="secondary"
+        />
+        <a routerLink="book-form/{{ Evento.id }}" class="p-button font-bold">
+          Editar
+        </a>
+      </div>
+    </ng-template>
+  </p-card>
+
+}@empty{
+  <p>No hay eventos disponibles</p>
+}
+  </div>
+</div>
+
+
+
